@@ -22,7 +22,7 @@ int main()
     }
     //if req == 0 that means mini 0 it normally print
 
-    //cout<<"req = "<<req<<" mini = "<<mini<<endl;
+    // cout<<"req = "<<req<<" mini = "<<mini<<endl;
     cout<<mini<<"\n";
 
     return 0;
