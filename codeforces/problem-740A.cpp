@@ -20,7 +20,7 @@ int main()
     else if(req == 3){
         mini = min(c,min(a+b,3*a));
     }
-    //if req == 0 that means mini 0 it normally print
+    //if req == 0 that means mini is 0 it normally print
 
     // cout<<"req = "<<req<<" mini = "<<mini<<endl;
     cout<<mini<<"\n";
