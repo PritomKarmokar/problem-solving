@@ -1,10 +1,9 @@
 class Solution {
 public:
-    
-    bool isValid(string s)
-    {
+    bool isValid(string s) {
+
         int n = s.size();
-        stack <int> st;
+        stack<char> st;
 
         for(int i = 0; i < n; i++){
             char ch = s[i];
@@ -12,18 +11,18 @@ public:
                 st.push(ch);
             }
             else{
-
                 if(st.empty()) return false;
-                char check = st.top();
-
-                if(ch == ')' && check == '(') st.pop();
-                else if(ch == '}' && check == '{') st.pop();
-                else if(ch == ']' && check == '[') st.pop();
-                else return false;
-
+                else{
+                    char openingBrace = st.top();
+                    if(ch == ')' && openingBrace != '(') return false;
+                    else if(ch == '}' && openingBrace != '{') return false;
+                    else if(ch == ']' && openingBrace != '[') return false;
+                    st.pop();
+                }
             }
         }
 
-        return (st.empty() == true);
+        if(st.empty()) return true;
+        return false;
     }
 };
