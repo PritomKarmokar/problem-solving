@@ -1,26 +1,27 @@
 class Solution {
 public:
-    void solve(vector<string> &ans, string str, int p, int q, int n)
+
+    void generate(int n, int open, int close, string brace, vector<string> &res)
     {
-        if((str.size()) == (2*n)){
-            ans.push_back(str);
-            return ;
+        if(open == n && close == n){
+            res.push_back(brace);
+            return;
         }
 
-        if(p < n)
-            solve(ans, str + "(", p+1, q, n);
+        if(open < n){
+            generate(n, open + 1, close, brace + '(', res);
+        }
 
-        if(q < p)
-            solve(ans, str + ")", p, q+1, n);
+        if(open > close){
+            generate(n , open, close + 1, brace + ')', res);
+        }
     }
 
-    vector<string> generateParenthesis(int n)
-    {
-        vector<string> ans;
+    vector<string> generateParenthesis(int n) 
+    {        
+        vector<string> res;
+        generate(n, 0 , 0 , "", res);
 
-        solve(ans, "", 0, 0, n);
-
-        return ans;
+        return res;
     }
-
 };
